@@ -1,0 +1,46 @@
+.cardsTaskListContainer  {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 4rem;
+    flex-direction: row;
+}
+
+.cardsTaskList{
+    width: 20rem;
+    height: 25rem;
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgba(0,0,0,0.1);
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.cardsTaskList:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 0 1rem rgba(0,0,0,0.2);
+}
+p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #FD9288;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+span {
+    font-size: .5rem;
+    font-weight: 600;
+    color: #FD9288;
+    cursor: pointer;
+}
+
+li {
+    max-width: 100%;
+    margin: .5rem 0 .5rem 0;
+}
+
+
