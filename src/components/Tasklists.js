@@ -27,8 +27,6 @@ const tasksActive = tasklist.map((tasklist, index) => {
         return 0
     }
 })
-//     function qui compte le nombre de tache non active
-
 
 const tasksNotActive = tasklist.map((tasklist, index) => {
     return (
@@ -87,7 +85,7 @@ const tasksNotActive = tasklist.map((tasklist, index) => {
                             );
                         })}
                         <div className="cardsTaskList">
-                            <h3>Créer une tache</h3>
+                            <h3>Créer une liste de tache</h3>
                             <form
                                 className="flexform"
                                 method="post"

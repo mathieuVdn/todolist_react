@@ -25,8 +25,8 @@ const Home = () => {
                 </h1>
 
                 <div className="actionButton">
-                    <a className="button" href="/tasklist">Voir mes Listes</a>
-                    <a className="button" href="/tasks">Ajouter une liste</a>
+                    <a className="button" href="/tasklist">Voir mes listes</a>
+                    <a className="button" href="/tasks">Voir mes taches</a>
                 </div>
             </main>
         </div>);

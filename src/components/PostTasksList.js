@@ -6,7 +6,6 @@ const PostTasksList = () => {
     return (
         <div>
                 <form method='post' onSubmit={(e)=>{
-
                     e.preventDefault();
                     const title = (e.target.title.value);
                     const description = (e.target.description.value);

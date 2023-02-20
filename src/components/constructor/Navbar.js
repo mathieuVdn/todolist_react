@@ -29,32 +29,31 @@ const Navbar = () => {
                         Accueil
                     </NavLink>
                 </li>
-
                 <li>
                     <NavLink
                         exact
                         to="/tasklist"
                         activeStyle={activeStyle}
-
                     >
                         Liste des tâches
                     </NavLink>
                 </li>
-
                 <li>
                     <NavLink
                         exact
-                        to="/task"
-                        activeStyle={activeStyle}
-                    >
+                        to="/tasks"
+                        activeStyle={activeStyle}>
                         Tâches
                     </NavLink>
                 </li>
-
                 <li>
-                    <a>
-                        <span className="material-symbols-outlined">account_circle</span>
-                    </a>
+                    <NavLink
+                        exact
+                        to="/profil"
+                        activeStyle={activeStyle}
+                    >
+                          Profil
+                    </NavLink>
                 </li>
             </ul>
         </nav>

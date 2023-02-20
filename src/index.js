@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Tasklists from "./components/Tasklists";
 import Task from "./components/Task";
+import PostUser from './components/PostUser';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
@@ -14,9 +15,8 @@ root.render(
         <Routes>
             <Route path="/" element={<Home/>} />
             <Route path="/tasklist" element={<Tasklists/>} />
-            <Route path="/task" element={<Task/>} />
-
-
+            <Route path="/tasks" element={<Task/>} />
+            <Route path="/profil" element={<PostUser/>} />
 
         </Routes>
     </BrowserRouter>
