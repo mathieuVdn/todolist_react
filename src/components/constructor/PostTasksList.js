@@ -1,6 +1,6 @@
 import React from 'react';
-import postTasksList from "../method/post/postTasksList";
-import UserId from "../cheat/UserId"
+import postTasksList from "../../method/post/postTasksList";
+import UserId from "../../cheat/UserId"
 
 const PostTasksList = () => {
     return (

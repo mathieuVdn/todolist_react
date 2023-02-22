@@ -52,9 +52,15 @@ const Navbar = () => {
                 </li>
 
                 <li>
+                    <NavLink
+                        exact
+                        to="/login"
+                        activeStyle={activeStyle}
+                    >
                     <a>
                         <span className="material-symbols-outlined">account_circle</span>
                     </a>
+                    </NavLink>
                 </li>
             </ul>
         </nav>

@@ -1,6 +1,5 @@
 import React from 'react';
 import connectApi from "./api/ConnectApi";
-import CardsFull from "./cardsFull";
 import { useState, useEffect } from 'react'
 import home from '../css/home.css';
 import Navbar from "./constructor/Navbar";

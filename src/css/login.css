@@ -1,0 +1,33 @@
+
+
+.formAccount {
+    margin: 0 auto;
+    width: 300px;
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFF;
+}
+
+.formAccount input {
+    max-width: 100%;
+    height: 1.5rem;
+    border: 1px solid #424A72;
+    border-radius: 5px;
+    padding: .5rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    outline: #424A72;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}

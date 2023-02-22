@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Tasklists from "./components/Tasklists";
 import Task from "./components/Task";
+import Login from "./components/Login";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
@@ -15,6 +16,7 @@ root.render(
             <Route path="/" element={<Home/>} />
             <Route path="/tasklist" element={<Tasklists/>} />
             <Route path="/task" element={<Task/>} />
+            <Route path="login" element={<Login/>} />
 
 
 

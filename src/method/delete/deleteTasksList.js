@@ -8,9 +8,12 @@ const DeleteTasksList = (id) => {
         })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                resolve(response.json());
+                return response.json();
+            })
+            .then(json => {
+                resolve(json);
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -18,4 +21,5 @@ const DeleteTasksList = (id) => {
             });
     });
 };
-export default DeleteTasksList;
+
+module.exports = DeleteTasksList;

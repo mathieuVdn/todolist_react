@@ -1,15 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import Navbar from "./constructor/Navbar";
 import '../css/tasklist.css';
-import connectApi from "./api/ConnectApi";
-import UserId from "../cheat/UserId";
 import DeleteTasksList from "../method/delete/deleteTasksList";
 import postTasksList from "../method/post/postTasksList";
-import GetTasklists from "./api/getTaskLists";
 import { useState } from "react";
-import ConnectApi from "./api/ConnectApi";
 import getTaskLists from "./api/getTaskLists";
-import {logDOM} from "@testing-library/react";
 
 const Tasklists = () => {
     const [tasklist, setTasklist] = useState([]);
@@ -18,42 +13,49 @@ const Tasklists = () => {
         setTasklist(currentTask);
     }, [currentTask]);
 //     function qui compte le nombre de tache active
-const tasksActive = tasklist.map((tasklist, index) => {
-    if (tasklist.tasks.length > 0) {
-    return (
-        tasklist.tasks.filter(task => task.active === true).length
-    )
-}   else {
-        return 0
-    }
-})
-//     function qui compte le nombre de tache non active
+    const tasksActive = tasklist.map((tasklist, index) => {
+        if (tasklist.tasks && tasklist.tasks.length > 0) {
+            return tasklist.tasks.filter((task) => task.active === true).length;
+        } else {
+            return 0;
+        }
+    });
 
-
-const tasksNotActive = tasklist.map((tasklist, index) => {
-    return (
-        tasklist.tasks.filter(task => task.active === false).length
-    )
-})
+    const tasksNotActive = tasklist.map((tasklist, index) => {
+        if (tasklist.tasks && tasklist.tasks.length > 0) {
+            return tasklist.tasks.filter((task) => task.active === false).length;
+        } else {
+            return 0;
+        }
+    });
   const handleSubmit = (e) => {
         e.preventDefault();
         const name = e.target.title.value;
         const description = e.target.description.value;
         postTasksList(name, description)
             .then((response) => {
-                setTasklist([... tasklist, response]);
+                setTasklist([...tasklist, response]);
+            })
+            .catch((error) => {
+                console.error("Error creating task list:", error);
+                // Handle the error here (e.g. display an error message)
             });
+
         e.target.title.value = "";
         e.target.description.value = "";
 
     }
     const handleDeleteTaskList = (id) => {
         DeleteTasksList(id)
-            .then((response) => {
-                setTasklist([... tasklist, response]);
+            .then(() => {
+                const updatedTasklist = tasklist.filter(item => item.id !== id);
+                setTasklist(updatedTasklist);
+            })
+            .catch((error) => {
+                console.error("Error deleting task list:", error);
             });
-    };
 
+    };
     return (
         <div>
             <Navbar />
