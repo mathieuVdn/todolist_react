@@ -12,6 +12,7 @@ const Tasklists = () => {
     useEffect(() => {
         setTasklist(currentTask);
     }, [currentTask]);
+
 //     function qui compte le nombre de tache active
     const tasksActive = tasklist.map((tasklist, index) => {
         if (tasklist.tasks && tasklist.tasks.length > 0) {
@@ -28,6 +29,7 @@ const Tasklists = () => {
             return 0;
         }
     });
+
   const handleSubmit = (e) => {
         e.preventDefault();
         const name = e.target.title.value;
@@ -45,17 +47,17 @@ const Tasklists = () => {
         e.target.description.value = "";
 
     }
-    const handleDeleteTaskList = (id) => {
+const handleDeleteTaskList = (id) => {
         DeleteTasksList(id)
-            .then(() => {
-                const updatedTasklist = tasklist.filter(item => item.id !== id);
-                setTasklist(updatedTasklist);
+            .then((response) => {
+                setTasklist(tasklist.filter((item) => item.id !== id));
             })
             .catch((error) => {
-                console.error("Error deleting task list:", error);
+                console.error("Erreur:", error);
             });
 
     };
+
     return (
         <div>
             <Navbar />
@@ -78,13 +80,22 @@ const Tasklists = () => {
                                     <p>{item.description}</p>
                                     <ul className="flexform">
                                         <li>
-                                            tache à accomplir : {tasksActive}
+                                            tache à accomplir : {item.tasks && item.tasks.length > 0
+                                                ? item.tasks.filter((task) => task.active === true)
+                                                    .length
+                                                : 0
+                                        }
+
                                         </li>
                                         <li>
-                                            tache accomplie : {tasksNotActive}
+                                            tache accomplie : {item.tasks && item.tasks.length > 0
+                                                ? item.tasks.filter((task) => task.active === false)
+                                                    .length
+                                                : 0
+                                        }
                                         </li>
                                     </ul>
-                                    <button className="button">Voir les taches</button>
+                                    <button className="button" >Voir les taches</button>
                                 </div>
                             );
                         })}

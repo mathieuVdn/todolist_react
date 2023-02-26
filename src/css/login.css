@@ -2,8 +2,7 @@
 
 .formAccount {
     margin: 0 auto;
-    width: 300px;
-    padding: 1em;
+    width: 500px;
     border: 1px solid #CCC;
     border-radius: 1em;
     display: flex;
@@ -11,6 +10,7 @@
     align-items: center;
     justify-content: center;
     background-color: #FFF;
+    padding: 3rem 0;
 }
 
 .formAccount input {

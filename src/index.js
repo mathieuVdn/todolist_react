@@ -16,10 +16,7 @@ root.render(
             <Route path="/" element={<Home/>} />
             <Route path="/tasklist" element={<Tasklists/>} />
             <Route path="/task" element={<Task/>} />
-            <Route path="login" element={<Login/>} />
-
-
-
+            <Route path="/login" element={<Login/>} />
         </Routes>
     </BrowserRouter>
   </React.StrictMode>

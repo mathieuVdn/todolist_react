@@ -5,13 +5,18 @@ import '../css/task.css';
 import { useState, useEffect } from 'react';
 import getTaskLists from "./api/getTaskLists";
 import putTask from "../method/put/putTask";
+import PostTasks from "../method/post/PostTasks";
 
 const Task = () =>{
     const [tasklist, setTasklist] = useState([]);
     const currentTask = getTaskLists();
+
     useEffect(() => {
         setTasklist(currentTask);
     }, [currentTask]);
+    console.log(tasklist)
+
+
 
     return (
             <div>
@@ -20,7 +25,7 @@ const Task = () =>{
                     <section className="container">
                         <h1>Mes taches </h1>
                         <div className="cardsTaskContainer">
-                            {Array.isArray(tasklist) && tasklist.map((tasklist, index) => {
+                            {tasklist.map((tasklist, index) => {
                                 return (
                                     <div className="cardsTask" key={index}>
                                         <div className="flex-ai">
@@ -28,7 +33,8 @@ const Task = () =>{
                                             <span className="material-symbols-outlined">delete</span>
                                         </div>
 
-                                        {Array.isArray(tasklist.tasks) && tasklist.tasks.map((task, index) => {
+                                        {tasklist.tasks.map((task, index) => {
+                                            console.log(task)
                                             return (
                                                 <ul className="cards">
                                                     <li key={index}>
@@ -38,12 +44,14 @@ const Task = () =>{
                                                                 if (task.active) {
                                                                     putTask(task.id, {active: false})
                                                                         .then((response) => {
-                                                                            setTasklist([... tasklist, response]);
+                                                                            console.log(response)
+                                                                            setTasklist([...tasklist.task.active, response]);
                                                                         });
                                                                 }else {
                                                                     putTask(task.id, {active: true})
                                                                         .then((response) => {
-                                                                            setTasklist([... tasklist, response]);
+                                                                            console.log(response)
+                                                                            setTasklist([...tasklist.task.active, response]);
                                                                         });
                                                                 }
                                                             }
@@ -52,12 +60,14 @@ const Task = () =>{
                                                                 if (task.active) {
                                                                     putTask(task.id, {active: false})
                                                                         .then((response) => {
-                                                                            setTasklist([... task.active, response]);
+                                                                            console.log(response)
+                                                                            setTasklist([...tasklist.task.active, response]);
                                                                         });
                                                                 }else {
                                                                     putTask(task.id, {active: true})
                                                                         .then((response) => {
-                                                                            setTasklist([... task.active, response]);
+                                                                            console.log(response)
+                                                                            setTasklist([...tasklist.task.active, response]);
                                                                         });
                                                                 }
                                                             }
@@ -75,13 +85,20 @@ const Task = () =>{
                                                         <span className="material-symbols-outlined">add</span>
                                                     </li>
                                                     <li>
-                                                        {/*    span suppression de task*/}
                                                         <span className="material-symbols-outlined">delete</span>
                                                     </li>
                                                 </ul>
                                             );
                                         })}
-                                        <form className="formTask">
+                                        <form className="formTask" method="POST" onSubmit={(e) => {
+                                            e.preventDefault();
+                                            let tasklistId = tasklist.id;
+                                            const name = e.target.name.value;
+                                            const description = e.target.description.value;
+                                            const amount = e.target.amount.value;
+
+                                            PostTasks(name, description, amount, tasklistId)
+                                        }}>
                                             <input type="text" name="name" placeholder="name" />
                                             <input type="text" name="description" placeholder="Description" />
                                             <input type="text" name="amount" placeholder="Quantité" />

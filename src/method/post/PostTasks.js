@@ -1,14 +1,15 @@
 // fonction permettant l'ajout d'une task
 import UserId from "../../cheat/UserId";
 
-function postTasksList(title, description) {
+function PostTasks( name, description, amount, taskList_id) {
     const requestoption = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title, description, UserId })
-    };
-    return fetch(`http://localhost:3004/tasksList/${UserId}`, requestoption)
+        body: JSON.stringify({ name, description, amount, taskList_id })
+
+    }
+    return fetch(`http://localhost:3004/tasksList/task/${UserId}`, requestoption)
         .then(response => response.json());
 }
 
-export default postTasksList;
+export default PostTasks;
